@@ -16,7 +16,7 @@
 </p>
 
 <h3> Languages and Tools:</h3>
-<table style="width:fit-content;">
+<table style="width:500px;">
     <tr>
     <th> Language/Script </th>
     <th> Experience Level</th>
@@ -55,7 +55,7 @@
   </tr>
 </table>
 
-<h3>Used controllers and MCUs:</h3>
+<h3> Used controllers and MCUs:</h3>
 <table style="width:fit-content;">
  <tr>
     <th> Provider </th>
@@ -84,6 +84,50 @@
   <tr>
     <td> Silicon Labs </td>
     <td> C8051 </td>
+  </tr>
+</table>
+
+<h3>Projects:</h3>
+<table style="width:fit-content;">
+ <tr>
+    <th> Project </th>
+    <th> Used </th>
+    <th> Info </th>
+  </tr>
+  <tr>
+    <td> Security system using firebase </td>
+    <td> Firebase  + PIC32 Ethernet starter kit II </td>
+    <td> Security system using firebase as database </td>
+  </tr>
+  <tr>
+    <td> IoT device (Scheduler) </td>
+    <td> ESP8266 + RTC </td>
+    <td> Perform specific event on timer/alarm </td>
+  </tr>
+  <tr>
+    <td> PICxx Bootloaders </td>
+    <td> PIC MCUs </td>
+    <td> Implemented/modified bootloaders for PICxx controllers with custom linker and verious interface (SD Card, USB, UART, CAN bootloader), Modified EZBL bootloaders </td>
+  </tr>
+  <tr>
+    <td> STM Bootloaders </td>
+    <td> STM MCUs </td>
+    <td> Implemented/modified bootloaders for STMxx controllers with custom linker and verious interface (SPI Flash, USB, UART bootloader, Bluetooth) </td>
+  </tr>
+  <tr>
+    <td> NXP Bootloader </td>
+    <td> LPC2129 USB bootloader </td>
+    <td> Implemented makefile USB bootloader for nxp lpc2129 </td>
+  </tr>
+  <tr>
+    <td> C8051f1xx bootloader </td>
+    <td> UART bootloader </td>
+    <td> Implemented simple uart bootloader </td>
+  </tr>
+  <tr>
+    <td> atsame54-xpro bootloader </td>
+    <td> Ethernet bootloader </td>
+    <td> Implemented dual bank ethernet bootloader </td>
   </tr>
 </table>
 
