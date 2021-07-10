@@ -1,10 +1,10 @@
 
 <div align="left">
 
-<h1 align="center">Hi 👋, I'm Ajay Ambaliya</h1>
-<h3 >A passionate embedded developer from India</h3>
+<h1 align="center">Hi 👋, I'm Ajay Ambaliya </h1>
+<p align ="center"><img src="https://i.imgur.com/qpvO2Vq.gif" alt="Flowers in Chania"></p>
 
-<p><img src="https://komarev.com/ghpvc/?username=aajay5&label=Profile%20views&color=050505&style=flat" alt="aajay5" /> </p>
+<h3 align="center" >"A passionate embedded developer from India"</h3>
 
 <h3 >Connect with me:</h3>
 <p>
@@ -14,6 +14,7 @@
 <a href="https://instagram.com/ambaliyaajay005" target="blank"><img src = https://shields.io/badge//-ambaliyaajay005-red?logo=instagram&style=flat /></a>
 <a href="https://www.youtube.com/channel/UCm3MTUDEpwMWt1qwnzuvJrw" target="blank"><img src = https://shields.io/badge//-Entertainment&nbsp;Freak-red?logo=youtube&style=flat /></a></br>
 </p>
+
 
 <h3> Languages and Tools:</h3>
 <table style="width:500px;">
@@ -137,5 +138,10 @@
 <p >&nbsp;<img  src="https://github-readme-stats.vercel.app/api?username=aajay5&show_icons=true&theme=synthwave&text_color=ffffff&locale=en" width="488" height="195"  alt="aajay5" /></p>
 
 <p ><img  src="https://github-readme-streak-stats.herokuapp.com/?user=aajay5&theme=dark" width="494" height="195"  alt="aajay5" /></p>
+
+<div align = "center">
+<h1>Thanks For Visit</h1>
+<h5>Have a nice day!!!!</h5>
+<img src="https://komarev.com/ghpvc/?username=aajay5&label=Profile%20views&color=050505&style=flat" alt="aajay5" /><div>
 
 </div>
