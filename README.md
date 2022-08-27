@@ -8,7 +8,7 @@
 
 <h3 >Connect with me:</h3>
 <p>
-<a href="https://twitter.com/ajyambaliya" target="blank"><img src = https://shields.io/badge//-ajyambaliya-blue?logo=twitter&style=flat></a>
+<a href="https://twitter.com/ajyambaliya" target="blank"><img src="https://shields.io/badge//-ajyambaliya-blue?logo=twitter&style=flat"></a>
 <a href="https://linkedin.com/in/ambaliya-ajay-0b38547b" target="blank"><img src = https://shields.io/badge//-ambaliya&#8212;ajay&#8212;0b38547b-blue?logo=linkedin&style=flat></a>
 <a href="https://fb.com/ambaliya.ajay.003" target="blank"><img src = https://shields.io/badge//-ambaliya.ajay.003-blue?logo=facebook&style=flat></a>
 <a href="https://instagram.com/ambaliyaajay005" target="blank"><img src = https://shields.io/badge//-ambaliyaajay005-red?logo=instagram&style=flat></a>
