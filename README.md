@@ -16,7 +16,9 @@
 <a href="https://www.youtube.com/channel/UCm3MTUDEpwMWt1qwnzuvJrw" target="blank"><img src="https://shields.io/badge//-Entertainment&nbsp;Freak-red?logo=youtube&style=flat"></a>
 </p>
 
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6060046377445813"
+     crossorigin="anonymous"></script>
+     
 <h3> Languages and Tools:</h3>
 <table style="width:500px;">
     <tr>
