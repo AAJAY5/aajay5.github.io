@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajay Ambaliya – Embedded Firmware Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f14;
+    --surface: #14171f;
+    --surface2: #1c2030;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #eef0f6;
+    --muted: #8890a8;
+    --accent: #00e5a0;
+    --accent2: #4f8cff;
+    --accent3: #ff6b6b;
+    --mono: 'Space Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(13,15,20,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: var(--mono); font-size: 14px; color: var(--accent); letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 6rem 2.5rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute; top: -200px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,229,160,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { max-width: 800px; position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-block;
+    font-family: var(--mono); font-size: 12px;
+    color: var(--accent); border: 1px solid rgba(0,229,160,0.3);
+    padding: 4px 14px; border-radius: 4px; margin-bottom: 1.5rem;
+    letter-spacing: 0.1em;
+  }
+  .hero-name {
+    font-family: var(--mono); font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700; line-height: 1.1;
+    margin-bottom: 0.5rem; color: var(--text);
+  }
+  .hero-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 300;
+    color: var(--muted); margin-bottom: 1.5rem;
+  }
+  .hero-title span { color: var(--accent2); font-weight: 500; }
+  .hero-desc {
+    font-size: 16px; color: var(--muted); max-width: 560px;
+    margin-bottom: 2.5rem; line-height: 1.8;
+  }
+  .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2.5rem; }
+  .chip {
+    font-family: var(--mono); font-size: 11px;
+    padding: 5px 12px; border-radius: 4px;
+    border: 1px solid var(--border2); color: var(--muted);
+    background: var(--surface);
+    transition: all 0.2s;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip.green { border-color: rgba(0,229,160,0.4); color: var(--accent); background: rgba(0,229,160,0.05); }
+  .chip.blue { border-color: rgba(79,140,255,0.4); color: var(--accent2); background: rgba(79,140,255,0.05); }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block; font-family: var(--mono); font-size: 13px;
+    padding: 12px 28px; background: var(--accent); color: #0d0f14;
+    border: none; border-radius: 6px; cursor: pointer;
+    text-decoration: none; font-weight: 700; letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: #00ffb2; transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-block; font-family: var(--mono); font-size: 13px;
+    padding: 12px 28px; background: transparent; color: var(--text);
+    border: 1px solid var(--border2); border-radius: 6px; cursor: pointer;
+    text-decoration: none; letter-spacing: 0.05em; transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2.5rem;
+    display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 2rem; font-weight: 700; color: var(--accent); }
+  .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* SECTIONS */
+  section { padding: 5rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-size: 2rem; font-weight: 700; margin-bottom: 3rem; color: var(--text);
+  }
+  .section-title span { color: var(--accent); }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .skill-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.5rem;
+    transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .skill-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .skill-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-icon { font-size: 24px; margin-bottom: 0.75rem; }
+  .skill-name { font-weight: 600; font-size: 15px; margin-bottom: 0.4rem; color: var(--text); }
+  .skill-items { font-family: var(--mono); font-size: 11px; color: var(--muted); line-height: 1.9; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .project-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.75rem;
+    transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .project-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+  }
+  .project-card:hover { border-color: var(--border2); transform: translateY(-4px); }
+  .project-card:hover::after { transform: scaleX(1); }
+  .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+  .project-icon { font-size: 28px; }
+  .project-badge {
+    font-family: var(--mono); font-size: 10px;
+    padding: 3px 10px; border-radius: 4px;
+    background: rgba(0,229,160,0.1); color: var(--accent);
+    border: 1px solid rgba(0,229,160,0.25);
+  }
+  .project-badge.blue { background: rgba(79,140,255,0.1); color: var(--accent2); border-color: rgba(79,140,255,0.25); }
+  .project-badge.red { background: rgba(255,107,107,0.1); color: var(--accent3); border-color: rgba(255,107,107,0.25); }
+  .project-title { font-size: 17px; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
+  .project-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: var(--mono); font-size: 10px; padding: 3px 8px;
+    border-radius: 4px; border: 1px solid var(--border2); color: var(--muted);
+  }
+
+  /* EXPERIENCE */
+  .exp-line {
+    display: flex; gap: 1.5rem; margin-bottom: 2rem;
+    padding-bottom: 2rem; border-bottom: 1px solid var(--border);
+  }
+  .exp-line:last-child { border-bottom: none; }
+  .exp-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); margin-top: 8px; flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(0,229,160,0.4);
+  }
+  .exp-year { font-family: var(--mono); font-size: 12px; color: var(--accent); min-width: 80px; margin-top: 4px; }
+  .exp-title { font-size: 16px; font-weight: 600; color: var(--text); }
+  .exp-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+  /* CONTACT */
+  .contact-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 3rem;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .contact-box::before {
+    content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+    width: 400px; height: 200px; border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(0,229,160,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .contact-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text); }
+  .contact-sub { color: var(--muted); margin-bottom: 2rem; }
+  .contact-rate {
+    display: inline-block; font-family: var(--mono); font-size: 13px;
+    padding: 8px 20px; border-radius: 6px;
+    background: rgba(0,229,160,0.08); color: var(--accent);
+    border: 1px solid rgba(0,229,160,0.2); margin-bottom: 2rem;
+  }
+  .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+  }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  .hero-content > * { animation: fadeUp 0.6s ease both; }
+  .hero-tag { animation-delay: 0.1s; }
+  .hero-name { animation-delay: 0.2s; }
+  .hero-title { animation-delay: 0.3s; }
+  .hero-desc { animation-delay: 0.4s; }
+  .hero-chips { animation-delay: 0.5s; }
+  .hero-cta { animation-delay: 0.6s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">ajay.ambaliya()</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="max-width:none; padding-top:7rem;">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">// Available for freelance</div>
+    <h1 class="hero-name">Ajay<br>Ambaliya</h1>
+    <p class="hero-title">Embedded <span>Firmware Engineer</span> · 7+ Years</p>
+    <p class="hero-desc">
+      B.E. in Electronics & Communication. I design and build reliable firmware for embedded systems — from bare-metal microcontrollers to IoT-connected smart devices.
+    </p>
+    <div class="hero-chips">
+      <span class="chip green">ESP32</span>
+      <span class="chip green">STM32</span>
+      <span class="chip green">PIC32</span>
+      <span class="chip blue">FreeRTOS</span>
+      <span class="chip blue">LVGL</span>
+      <span class="chip blue">Matter</span>
+      <span class="chip">C / C++</span>
+      <span class="chip">IoT</span>
+      <span class="chip">BLE</span>
+      <span class="chip">UART · SPI · I2C</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">7+</div><div class="stat-label">Years Experience</div></div>
+  <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Projects Delivered</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">MCU Families</div></div>
+  <div class="stat"><div class="stat-num">$25</div><div class="stat-label">Starting Rate / hr</div></div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// expertise</div>
+  <h2 class="section-title">Core <span>Skills</span></h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">⚙️</div>
+      <div class="skill-name">Microcontrollers</div>
+      <div class="skill-items">ESP32 · ESP8266<br>STM32 (F / H series)<br>PIC32 / PIC16/18</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🧵</div>
+      <div class="skill-name">RTOS & Firmware</div>
+      <div class="skill-items">FreeRTOS<br>Bare-metal C/C++<br>Custom Bootloaders</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🖥️</div>
+      <div class="skill-name">UI & Display</div>
+      <div class="skill-items">LVGL UI Framework<br>480×480 Touch Display<br>7" TFT Panels</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📡</div>
+      <div class="skill-name">Connectivity</div>
+      <div class="skill-items">WiFi · BLE · MQTT<br>Matter / Alexa<br>UART · SPI · I2C · CAN</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">☁️</div>
+      <div class="skill-name">IoT & Cloud</div>
+      <div class="skill-items">AWS IoT · MQTT Broker<br>OTA Firmware Updates<br>REST API Integration</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔧</div>
+      <div class="skill-name">Protocols & Debug</div>
+      <div class="skill-items">USB · SDCard · CAN<br>JTAG / SWD Debug<br>Logic Analyzer / Scope</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// portfolio</div>
+  <h2 class="section-title">Featured <span>Projects</span></h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">💡</div>
+        <span class="project-badge">IoT · Smart Home</span>
+      </div>
+      <div class="project-title">Smart Switch – Matter & Alexa</div>
+      <div class="project-desc">ESP32-based smart switch with 480×480 capacitive touch display, Matter protocol integration, and Amazon Alexa voice control support.</div>
+      <div class="project-tags">
+        <span class="tag">ESP32</span><span class="tag">Matter</span><span class="tag">Alexa</span>
+        <span class="tag">LVGL</span><span class="tag">480×480 Display</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">📱</div>
+        <span class="project-badge blue">Hobby</span>
+      </div>
+      <div class="project-title">ESP32 Smartphone</div>
+      <div class="project-desc">Fully functional hobby smartphone built on ESP32 featuring LVGL-driven GUI, SIM module for cellular connectivity, and custom touch interface.</div>
+      <div class="project-tags">
+        <span class="tag">ESP32</span><span class="tag">LVGL</span><span class="tag">SIM Module</span><span class="tag">GSM</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🔬</div>
+        <span class="project-badge red">Medical · IoT</span>
+      </div>
+      <div class="project-title">Therapy Light Device</div>
+      <div class="project-desc">Dual-MCU therapy device with ESP32 master running LVGL on a 7" display, controlling STM32 slave nodes that apply precise frequency-based light therapy commands.</div>
+      <div class="project-tags">
+        <span class="tag">ESP32</span><span class="tag">STM32</span><span class="tag">LVGL</span>
+        <span class="tag">7" Display</span><span class="tag">UART</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🌱</div>
+        <span class="project-badge">Agriculture · BLE</span>
+      </div>
+      <div class="project-title">FarmerLED – Smart Grow Light</div>
+      <div class="project-desc">ESP32 PWM controller for agricultural LED lighting. 4-channel phase-shifted output (max 100% combined duty), BLE app control, and on-device scheduling.</div>
+      <div class="project-tags">
+        <span class="tag">ESP32</span><span class="tag">BLE</span><span class="tag">PWM</span>
+        <span class="tag">4-Channel</span><span class="tag">Scheduler</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🚀</div>
+        <span class="project-badge blue">Low-Level</span>
+      </div>
+      <div class="project-title">STM32 Custom Bootloader</div>
+      <div class="project-desc">Custom UART and USB bootloaders for STM32 microcontrollers, enabling secure firmware flashing and field updates without external debug hardware.</div>
+      <div class="project-tags">
+        <span class="tag">STM32</span><span class="tag">UART</span><span class="tag">USB</span><span class="tag">Bootloader</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">💾</div>
+        <span class="project-badge blue">Low-Level</span>
+      </div>
+      <div class="project-title">PIC32 Multi-Interface Bootloader</div>
+      <div class="project-desc">Versatile bootloader for PIC32 supporting UART, USB, and SD Card firmware update channels — designed for field-deployable products with no PC dependency.</div>
+      <div class="project-tags">
+        <span class="tag">PIC32</span><span class="tag">UART</span><span class="tag">USB</span><span class="tag">SDCard</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// background</div>
+  <h2 class="section-title">Education &amp; <span>Experience</span></h2>
+  <div class="exp-line">
+    <div class="exp-dot"></div>
+    <div class="exp-year">2017 – Now</div>
+    <div>
+      <div class="exp-title">Embedded Firmware Engineer</div>
+      <div class="exp-sub">7+ years · Consumer Electronics · IoT · Industrial</div>
+    </div>
+  </div>
+  <div class="exp-line">
+    <div class="exp-dot"></div>
+    <div class="exp-year">~2017</div>
+    <div>
+      <div class="exp-title">Bachelor of Engineering – Electronics & Communication</div>
+      <div class="exp-sub">Core focus: Microcontrollers, Embedded Systems, Digital Electronics</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-box">
+    <div class="section-label" style="margin-bottom:0.5rem;">// let's build something</div>
+    <div class="contact-title">Available for Freelance Work</div>
+    <div class="contact-sub">ESP32 · STM32 · PIC · IoT · RTOS · LVGL · Custom Firmware</div>
+    <div class="contact-rate">Starting at $25 – $50 / hr · Open to project-based pricing</div>
+    <div class="contact-links">
+      <a href="mailto:ajay@example.com" class="btn-primary">Send Email</a>
+      <a href="#" class="btn-secondary">LinkedIn</a>
+      <a href="#" class="btn-secondary">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <code>// built with ❤️ · Ajay Ambaliya · Embedded Firmware Engineer · 2025</code>
+</footer>
+
+</body>
+</html>
