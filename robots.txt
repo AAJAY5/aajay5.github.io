@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://aajay-portfolio.vercel.app/sitemap.xml
+Sitemap: https://aajay-portfolio.vercel.app/sitemap.txt
